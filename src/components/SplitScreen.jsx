@@ -6,20 +6,23 @@ const Container = styled.div`
 `
 
 const Pannel = styled.div`
-    flex: 1;
+    flex: ${(p) => p.flex};
 `
 
-const SplitScreen = ({ Left, Right }) => {
+const SplitScreen = ({ children, LeftWidth = 1, RightWidth = 1 }) => {
+
+  const [Left, Right] = children;
+
   return (
     <Container>
-      <Pannel>
-        <Left />
+      <Pannel flex={LeftWidth}>
+        {Left}
       </Pannel>
-
-      <Pannel>
-        <Right />
+ 
+      <Pannel flex={RightWidth}>
+        {Right}
       </Pannel>
-    </Container>
+    </Container> 
   );
 };
 

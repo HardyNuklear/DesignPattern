@@ -1,7 +1,6 @@
 export const LargeAuthorListItems = ({ author }) => {
   const { name, age, contry, books } = author;
 
-  console.log("AUTHOOOR", author);
   return (
     <>
       <h2>{name}</h2>

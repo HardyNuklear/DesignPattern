@@ -1,18 +1,21 @@
-import { SmallBooksListItems } from "./components/books/SmallBooksListItems";
-import { RegularList } from "./components/lists/RegularList";
-import { Modal } from "./components/Modal";
-import { books } from "./data/books";
+import { UserInfo } from "./components/user-info";
+import { DataSource } from "./components/data-source";
+import axios from "axios";
+
+const getDataFromServer = async (url) => {
+  const response = await axios.get(url);
+  return response.data;
+};
 
 function App() {
   return (
     <>
-      <Modal>
-        <RegularList
-          items={books}
-          sourceName={"books"}
-          ItemComponent={SmallBooksListItems}
-        />
-      </Modal>
+      <DataSource
+        getData={() => getDataFromServer("/users/2")}
+        ressourceName="user"
+      >
+        <UserInfo />
+      </DataSource>
     </>
   );
 }
